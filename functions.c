@@ -1,12 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include "functions.h"
+#include "defs.h"
 
-void delay()
+char *get_string()
 {
-       
-        for (int c = 1; c <= 32767; c++)
-                for (int d = 1; d <= 32767; d++) {}
+        int size = 1, next_character = 0;
+        char character;
+        char *string = malloc(size * sizeof(char));
 
+        getchar();
+
+        while (TRUE) {
+                character = getchar();
+                if (character == '\n')
+                        break;
+                string = realloc(string, ++size * sizeof(char));
+                string[next_character++] = character;
+        }
+        return string;
 }

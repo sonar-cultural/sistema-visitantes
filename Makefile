@@ -1,20 +1,27 @@
-SHELL = /bin/bash
-CC=gcc
-CFLAGS= -c
+CFLAGS = -c
+CC = gcc
 
-mobbac: main.o interface.o functions.o
-		$(CC) -o mobbac main.o interface.o functions.o
+visitors_system: main.o functions.o menu.o visitor.o file_handler.o admin.o
+	$(CC) -o visitors_system main.o functions.o menu.o visitor.o file_handler.o admin.o
 
-main.o: main.c interface.o functions.o
-		$(CC) $(CFLAGS) main.c
-
-interface.o: interface.c interface.h
-		$(CC) $(CFLAGS) interface.c
+main.o: main.c main.h defs.h
+	$(CC) $(CFLAGS) main.c
 
 functions.o: functions.c functions.h
-		$(CC) $(CFLAGS) functions.c
-run:
-		./mobbac
+	$(CC) $(CFLAGS) functions.c
+
+menu.o: menu.c menu.h
+	$(CC) $(CFLAGS) menu.c
+
+admin.o: admin.c admin.h
+	$(CC) $(CFLAGS) admin.c
+
+visitor.o: visitor.c visitor.h
+	$(CC) $(CFLAGS) visitor.c
+
+file_handler.o: file_handler.c file_handler.h
+	$(CC) $(CFLAGS) file_handler.c
 
 clean:
-		rm -f main.o interface.o functions.o mobbac
+	@echo "Cleaning"
+	rm -rvf *.o ./visitors_system

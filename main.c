@@ -1,36 +1,41 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "interface.h"
+#include "main.h"
 
-int main() {
-    
-        int option;
+int main()
+{
+        int option, amount_visitors, loop = TRUE, month;
+        struct visitor *root = NULL;
+        root = read_from_file(root, &amount_visitors);
 
-        menu_head();
+        while (loop) {
+                menu();
 
-        option = get_option();
+                scanf("%d", &option);
 
-        switch (option)
-        {
-        case 1:
-                write_userData();
-                break;
-        case 2:
-                printf("Caso 2\n");
-                break;
-        case 3:                
-                system("clear");
-                printf("caso 3");
-                exit(0);
-                break;
-
-        default:
-                system("clear\n");
-                printf("Opção inválida! Tente novamente.\n");
-                break;
+                switch (option) {
+                case 1:
+                        root = set_visitor_data(root, &amount_visitors);
+                        break;
+                case 2:
+                        list_visitors(root);
+                        break;
+                case 3:
+                        month = get_month();
+                        visitors_per_month(root, month);
+                        break;
+                case 4:
+                        get_histogram(amount_visitors, root);
+                        break;
+                case 5:
+                        loop = FALSE;
+                        break;
+                default:
+                        printf("Opção inválida! Tente novamente.\n");
+                        break;
+                }
         }
 
-        return 0;
+        write_to_file(root);
+        free(root);
 
+        return 0;
 }
