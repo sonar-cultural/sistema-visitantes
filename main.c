@@ -2,7 +2,7 @@
 
 int main()
 {
-        int option, amount_visitors, loop = TRUE, month;
+        int option, amount_visitors, loop = TRUE, month = 0;
         struct visitor *root = NULL;
         root = read_from_file(root, &amount_visitors);
 
@@ -35,7 +35,6 @@ int main()
         }
 
         write_to_file(root);
-        free(root);
 
         return 0;
 }
