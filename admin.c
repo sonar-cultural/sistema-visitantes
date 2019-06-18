@@ -59,7 +59,7 @@ void visitors_per_month(struct visitor *root, int choosen_month)
 
         pointer = root;
 
-        printf("\n\nTotal de visitantes | Mês %d: \n", month);
+        printf("\n\nTotal de visitantes | Mês %d: \n", choosen_month);
 
         while (pointer != NULL) {
                 local = localtime(&pointer->date);
