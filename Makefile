@@ -1,4 +1,4 @@
-CFLAGS = -c
+CFLAGS = -c -g
 CC = gcc
 
 visitors_system: main.o functions.o menu.o visitor.o file_handler.o admin.o

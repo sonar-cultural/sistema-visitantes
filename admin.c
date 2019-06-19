@@ -10,11 +10,9 @@ void list_visitors(struct visitor *root)
                 return;
         }
 
-        struct visitor *pointer;
+        struct visitor *pointer = root;
         struct tm *local;
         int day, month, year;
-
-        pointer = root;
 
         printf("\n\nVisitantes: \n");
 
@@ -52,12 +50,10 @@ void visitors_per_month(struct visitor *root, int choosen_month)
                 return;
         }
 
-        struct visitor *pointer;
+        struct visitor *pointer = root;
         struct tm *local;
         int counter = 0;
         int day, month, year;
-
-        pointer = root;
 
         printf("\n\nTotal de visitantes | Mês %d: \n", choosen_month);
 
@@ -84,15 +80,13 @@ void get_histogram(int amount_visitors, struct visitor *root)
 {
         int histogram[HISTOGRAM_AMOUNT] = {0};
 	char *labels[HISTOGRAM_AMOUNT];
-        struct visitor *visitor;
+        struct visitor *visitor = root;
 
         labels[0] = "até 12 anos ";
 	labels[1] = "13 - 18 anos";
 	labels[2] = "19 - 29 anos";
 	labels[3] = "30 - 49 anos";
 	labels[4] = "+50 anos    ";
-
-        visitor = root;
 
         if (visitor != NULL) {
                 for (int j = 0; j < amount_visitors; j++) {

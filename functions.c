@@ -6,7 +6,7 @@ char *get_string()
 {
         int size = 1, next_character = 0;
         char character;
-        char *string = malloc(size * sizeof(char));
+        char *string = malloc(size * sizeof(string));
 
         getchar();
 
@@ -14,7 +14,7 @@ char *get_string()
                 character = getchar();
                 if (character == '\n')
                         break;
-                string = realloc(string, ++size * sizeof(char));
+                string = realloc(string, ++size * sizeof(string));
                 string[next_character++] = character;
         }
         return string;
@@ -30,6 +30,4 @@ void free_pointer(struct visitor *root)
 
         if (root != NULL)
                 free(root);
-
-
 }

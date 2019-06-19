@@ -29,7 +29,7 @@ time_t set_date()
 
 struct visitor *create_visitor()
 {
-        struct visitor *visitor = malloc(sizeof(struct visitor));
+        struct visitor *visitor = calloc(1, sizeof(struct visitor));
         visitor->next = NULL;
 
         return visitor;
