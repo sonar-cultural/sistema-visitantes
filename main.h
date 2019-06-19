@@ -6,3 +6,4 @@
 #include "visitor.h"
 #include "admin.h"
 #include "file_handler.h"
+#include "functions.h"

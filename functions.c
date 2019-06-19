@@ -19,3 +19,17 @@ char *get_string()
         }
         return string;
 }
+
+void free_pointer(struct visitor *root)
+{
+        if (root->next != NULL)
+                free_pointer(root->next);
+
+        if (root->name != NULL)
+                free(root->name);
+
+        if (root != NULL)
+                free(root);
+
+
+}

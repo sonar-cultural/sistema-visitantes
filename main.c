@@ -35,6 +35,7 @@ int main()
         }
 
         write_to_file(root);
+        free_pointer(root);
 
         return 0;
 }

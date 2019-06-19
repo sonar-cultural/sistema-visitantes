@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "defs.h"
 
 void write_to_file(struct visitor *root)
@@ -46,22 +47,24 @@ struct visitor *read_from_file(struct visitor *root, int *amount_visitors)
                         if (root == NULL) {
                                 root = malloc(sizeof(struct visitor));
                                 root = aux;
-                                root->name = name;
+                                root->name = malloc(30*sizeof(char));
+                                strcpy(root->name, name);
                                 visitor = root;
                         }
 
                         else {
-                                aux->name = name;
+                                aux->name = malloc(30*sizeof(char));
+                                strcpy(aux->name, name);
                                 visitor->next = aux;
                                 visitor = visitor->next;
                         }
 
                         counter++;
+                        free(name);
                 }
 
                 *amount_visitors = counter;
                 visitor->next = NULL;
-                free(aux);
 
         } else {
                 printf("Arquivo vazio.\n\n");
