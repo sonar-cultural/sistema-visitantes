@@ -40,6 +40,11 @@ int get_day()
 
         scanf("%d", &day);
 
+        while (day <= 0 || day > 31) {
+                printf("Dia inválido. Tente novamente.\n");
+                scanf("%d", &day);
+        }
+
         return day;
 }
 
@@ -50,6 +55,11 @@ int get_month()
         printf("Qual mês gostaria de visualizar?\n");
 
         scanf("%d", &month);
+
+        while (month <= 0 || month > 12) {
+                printf("Mês inválido. Tente novamente.\n");
+                scanf("%d", &month);
+        }
 
         return month;
 }

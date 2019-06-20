@@ -17,6 +17,12 @@ int set_age()
         int age;
         printf("Idade: ");
         scanf("%d", &age);
+
+        while (age < 0 || age > 100) {
+                printf("Idade inválida. Tente novamente.\n");
+                scanf("%d", &age);
+        }
+
         return age;
 }
 

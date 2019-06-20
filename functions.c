@@ -17,6 +17,7 @@ char *get_string()
                 string = realloc(string, ++size * sizeof(string));
                 string[next_character++] = character;
         }
+
         return string;
 }
 
