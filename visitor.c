@@ -68,5 +68,7 @@ struct visitor *set_visitor_data(struct visitor *new_root, int *amount_visitors)
         new_root = add_visitor(new_root, name, age, date);
         *amount_visitors += 1;
 
+        printf("\nObrigado! Aproveite sua visita!\n\n");
+
         return new_root;
 }

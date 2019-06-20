@@ -32,6 +32,17 @@ void list_visitors(struct visitor *root)
         printf("\n\n");
 }
 
+int get_day()
+{
+        int day;
+
+        printf("Qual dia gostaria de visualizar?\n");
+
+        scanf("%d", &day);
+
+        return day;
+}
+
 int get_month()
 {
         int month;
@@ -43,7 +54,7 @@ int get_month()
         return month;
 }
 
-void visitors_per_month(struct visitor *root, int choosen_month)
+void visitors_per_date(struct visitor *root, int choosen_day, int choosen_month)
 {
         if (root == NULL) {
                 printf("Lista vazia!\n");
@@ -63,11 +74,20 @@ void visitors_per_month(struct visitor *root, int choosen_month)
                 month = local->tm_mon + 1;
                 year = local->tm_year + 1900;
 
-                if (month == choosen_month) {
-                        counter++;
-                        printf("------------------------------------------\n");
-                        printf("Nome: %s | Idade: %d | Data: %02d/%02d/%d\n",
-                                pointer->name, pointer->age, day, month, year);
+                if (choosen_day > 0) {
+                        if (choosen_day == day && choosen_month == month) {
+                                counter++;
+                                printf("------------------------------------------\n");
+                                printf("Nome: %s | Idade: %d | Data: %02d/%02d/%d\n",
+                                        pointer->name, pointer->age, day, month, year);
+                        }
+                } else {
+                        if (month == choosen_month) {
+                                counter++;
+                                printf("------------------------------------------\n");
+                                printf("Nome: %s | Idade: %d | Data: %02d/%02d/%d\n",
+                                        pointer->name, pointer->age, day, month, year);
+                        }
                 }
 
                 pointer = pointer->next;
@@ -109,13 +129,16 @@ void get_histogram(int amount_visitors, struct visitor *root)
 
         printf("\n\nHistograma das idades: \n");
         for (int i = 0; i < HISTOGRAM_AMOUNT; i++) {
+                int counter = 0;
                 printf("------------------------------------------\n");
 		printf("%s | ", labels[i]);
 
-                for (int j = 0; j < histogram[i]; ++j)
+                for (int j = 0; j < histogram[i]; ++j) {
                         printf("#");
+                        counter++;
+                }
 
-		printf("\n");
+		printf(" (%d)\n", counter);
 	}
 
         printf("\n\n");

@@ -2,7 +2,8 @@
 
 int main()
 {
-        int option, amount_visitors, loop = TRUE, month = 0;
+        int option, amount_visitors, loop = TRUE;
+        int month = 0, day = 0;
         struct visitor *root = NULL;
         root = read_from_file(root, &amount_visitors);
 
@@ -20,12 +21,17 @@ int main()
                         break;
                 case 3:
                         month = get_month();
-                        visitors_per_month(root, month);
+                        visitors_per_date(root, 0, month);
                         break;
                 case 4:
-                        get_histogram(amount_visitors, root);
+                        day = get_day();
+                        month = get_month();
+                        visitors_per_date(root, day, month);
                         break;
                 case 5:
+                        get_histogram(amount_visitors, root);
+                        break;
+                case 6:
                         loop = FALSE;
                         break;
                 default:
